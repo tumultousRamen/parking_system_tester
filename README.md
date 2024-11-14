@@ -1,5 +1,18 @@
 # Parking System Tester
 
+This parking system project implements models for two vehicle types: Mini and Buses and tests out the following core scenarios:
+1. Mini vehicle parking at the station
+2. Bus vehicle parking at the station
+3. Simulatenous vehicle arrivals at different entry points.
+
+The project addresses CI/CD integration requirements by:
+1. autoamted tests triggered for every code commit
+2. Automated tests triggered for every deployment.
+3. Smooth integration into CI/CD pipelines
+4. Fast feedback on code changes. 
+5. Robust handling of test failures, including intermittent failures.
+
+
 ## Framework: PyTest
 The project uses PyTest framework because of its:
 1. Excellent support for test fixtures and dependency injection 
@@ -29,12 +42,51 @@ A parking station object has a list mini and bus spots.
 Function _park_vehicle_ attempts to park a particular vehicle of type of MINI or BUS in an appropriate spot if available. 
 
 ### GitHub Actions Workflow
-The test.yaml configuration runs tets for every push to the projects main branch, and runs on every pull request as well. The workflow ensures immediate feedback on code changes. It uses the ubtuntu-latest for consistent environment, and Python v3.9 for reproducability. It also configures automated dependency installation. 
-
-Additionally, the workflow uploads test results if test fails (if: always()) and preserves reports for debugging and analysis. It also maintains historical test data.
+The project address smooth CI/CD integration by leveraging GitHub Actions Worflow. It:
+1. Runs on every push to main branch and pull requests
+2. Uses Ubuntu-latest and Python 3.9 for consistency
+3. Automates dependency installation
+4. Preserves test artifacts and reports
+5. Maintains historical test data
 
 ### PyTest Configuration
 
-pytest.ini automatically discovers tests in the test directory, and automatically runs tests in parallel based on CPU cores which reduces test execution time signiicantly. It also helps catch race conditions in concurrent operations. 
+1. pytest.ini automatically discovers tests in the test directory, and automatically runs tests in parallel based on CPU cores which reduces test execution time signiicantly. It also helps catch race conditions in concurrent operations. 
 
-The reports generated contain detailed execution output (--verbose) and its generates machine-readable test results (--junit-xml) for CI systems. It also generates human-readable (--html) HTML test reports. It covers code coverage tracking (--cov) and generates HTML (--cov-report) coverage report.  
+2, The reports generated contain detailed execution output (--verbose) and its generates machine-readable test results (--junit-xml) for CI systems. It also generates human-readable (--html) HTML test reports. It covers code coverage tracking (--cov) and generates HTML (--cov-report) coverage report.
+
+## Geting Started
+```
+# Clone the repository
+git clone https://github.com/tumultousRamen/parking_system_tester.git
+
+# Install dependencies
+pip install -e .
+
+# Run tests
+python -m pytest
+```
+
+## Test Coverage
+The current implementation covers:
+1. Single vehicle parking operations
+2. Concurrent parking operations
+3. Capacity management
+4. Type-specific parking restrictions
+
+## CI/CD Integration
+1. The project uses GitHub Actions for automatic test runs 
+2. The project employs pytest-xdist for parallel test execution
+3. The project is conifgured to generate test artifacts and reports
+
+## Best Practices
+The project follows best practices by:
+1. Employing proper python package structure with _setup.py_
+2. Ensuring seperation of concersn (models, business logic, tests are clearly defined)
+3. Defining fixtures of test data setup.
+4. Running parameterized tests for different scenarios
+
+## Comprehensive Report Generation 
+1. The project utilizes JUnit XML reports for CI integration
+2. HTML reports for human readability.
+3. Code coverage reports.
