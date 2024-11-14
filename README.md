@@ -5,6 +5,19 @@ This parking system project implements models for two vehicle types: Mini and Bu
 2. Bus vehicle parking at the station
 3. Simulatenous vehicle arrivals at different entry points.
 
+In addition to the core testing requirements, we also test the following conditions:
+1. Full parking lot scenario 
+2. Zero capacity testing
+3. Negative capacity testing
+4. Invalid vehicle types
+5. Invalid spot IDs
+
+The project also has the following additonal features:
+1. Vehicle removal
+2. Parking status reporting
+3. Type checking
+
+
 The project addresses CI/CD integration requirements by:
 1. autoamted tests triggered for every code commit
 2. Automated tests triggered for every deployment.
@@ -73,6 +86,11 @@ The current implementation covers:
 2. Concurrent parking operations
 3. Capacity management
 4. Type-specific parking restrictions
+5. Boundary Testing
+6. Error handling
+7. Status reporting
+8. Vehicle removal
+9. Parameter validation
 
 ## CI/CD Integration
 1. The project uses GitHub Actions for automatic test runs 

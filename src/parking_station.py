@@ -10,6 +10,10 @@ class InvalidVehicleTypeException(Exception):
     """Raised when attempting to park an invalid vehicle type"""
     pass
 
+class InvalidVehicleException(Exception):
+    """Raised when an invalid vehicle object is provided"""
+    pass
+
 class ParkingStation:
     def __init__(self, mini_spots: int, bus_spots: int):
         if mini_spots < 0 or bus_spots < 0:
@@ -22,16 +26,17 @@ class ParkingStation:
         self._max_mini_spots = mini_spots
         self._max_bus_spots = bus_spots
 
-    def park_vehicle(self, vehicle: Vehicle) -> str:
+    def park_vehicle(self, vehicle) -> str:
         """
         Attempts to park a vehicle in an available spot.
         Returns spot ID if successful, raises exception if no spots available.
         """
+
         if not isinstance(vehicle, Vehicle):
-            raise TypeError("Invalid vehicle object")
+            raise InvalidVehicleException("Expected Vehicle instance")
             
-        if vehicle.type not in VehicleType:
-            raise InvalidVehicleTypeException(f"Vehicle type {vehicle.type} not supported")
+        if not isinstance(vehicle.type, VehicleType):
+            raise InvalidVehicleTypeException(f"Unsupported vehicle type: {vehicle.type}")
 
         for spot in self.spots:
             if not spot.is_occupied and spot.type == vehicle.type:

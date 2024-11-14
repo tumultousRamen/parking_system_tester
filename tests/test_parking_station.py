@@ -4,7 +4,8 @@ from src.models.vehicle import Vehicle, VehicleType
 from src.parking_station import (
     ParkingStation,
     ParkingFullException,
-    InvalidVehicleTypeException
+    InvalidVehicleTypeException,
+    InvalidVehicleException
 )
 
 class TestParkingStation:
@@ -84,13 +85,21 @@ class TestParkingStation:
 
     def test_invalid_vehicle_type(self, parking_station):
         """Test parking a vehicle with invalid type"""
+        # Create a proper Vehicle instance but with invalid type
+        invalid_vehicle = Vehicle("TRUCK", "MOCK-001")
+        
+        with pytest.raises(InvalidVehicleTypeException):
+            parking_station.park_vehicle(invalid_vehicle)
+
+    def test_invalid_vehicle_object(self, parking_station):
+        """Test parking with an invalid vehicle object"""
         class MockVehicle:
             type = "TRUCK"
             plate_number = "MOCK-001"
 
-        with pytest.raises(InvalidVehicleTypeException):
+        with pytest.raises(InvalidVehicleException):
             parking_station.park_vehicle(MockVehicle())
-
+    
     def test_parking_status(self, parking_station, mini_vehicle, bus_vehicle):
         """Test parking status reporting"""
         initial_status = parking_station.get_parking_status()
