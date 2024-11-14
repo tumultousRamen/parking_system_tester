@@ -66,7 +66,7 @@ The project address smooth CI/CD integration by leveraging GitHub Actions Worflo
 
 1. pytest.ini automatically discovers tests in the test directory, and automatically runs tests in parallel based on CPU cores which reduces test execution time signiicantly. It also helps catch race conditions in concurrent operations. 
 
-2, The reports generated contain detailed execution output (--verbose) and its generates machine-readable test results (--junit-xml) for CI systems. It also generates human-readable (--html) HTML test reports. It covers code coverage tracking (--cov) and generates HTML (--cov-report) coverage report.
+2. The reports generated contain detailed execution output (--verbose) and its generates machine-readable test results (--junit-xml) for CI systems. It also generates human-readable (--html) HTML test reports. It covers code coverage tracking (--cov) and generates HTML (--cov-report) coverage report.
 
 ## Geting Started
 ```
