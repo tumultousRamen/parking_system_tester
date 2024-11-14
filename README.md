@@ -25,7 +25,7 @@ The project addresses CI/CD integration requirements by:
 4. Fast feedback on code changes. 
 5. Robust handling of test failures, including intermittent failures.
 
-To view previous workflows, navigate to the actions tab and select any workflow. To run tests on your local system, following the instructions (here)[#getting-started]. 
+To view previous workflows, navigate to the actions tab and select any workflow. To run tests on your local system, following the instructions [here](#getting-started). 
 ## Framework: PyTest
 The project uses PyTest framework because of its:
 1. Excellent support for test fixtures and dependency injection 
