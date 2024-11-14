@@ -17,7 +17,7 @@ def mini_vehicle():
     return Vehicle(VehicleType.MINI, "TEST-MINI-001")
 
 @pytest.fixture
-def bus_vehcile():
+def bus_vehicle():
     """
     This function creates a Bus vehicle with a test plate number
     """
