@@ -1,32 +1,27 @@
+# tests/test_parking_station.py
 import pytest
-from src.models.vehicle import VehicleType,Vehicle
+from src.models.vehicle import Vehicle, VehicleType
 from src.parking_station import ParkingStation
 from concurrent.futures import ThreadPoolExecutor
 
 class TestParkingStation:
     def test_park_mini(self, parking_station, mini_vehicle):
-        """
-        Test parking a Mini Vehicle
-        """
-
+        """Test parking a Mini vehicle"""
         spot_id = parking_station.park_vehicle(mini_vehicle)
-        assert spot_id is not None 
-        assert spot_id.startswith("MINI_")
-
+        assert spot_id is not None
+        assert spot_id.startswith("MINI_")  
+        
         available_spots = parking_station.get_available_spots(VehicleType.MINI)
-        assert len(available_spots) == 4 
+        assert len(available_spots) == 4  # One spot taken, 4 remaining
 
     def test_park_bus(self, parking_station, bus_vehicle):
-        """
-        This function tests parking a bus
-        """
-
+        """Test parking a Bus vehicle"""
         spot_id = parking_station.park_vehicle(bus_vehicle)
         assert spot_id is not None
-        assert spot_id.startsWith("BUS_")
-
+        assert spot_id.startswith("BUS_")  
+        
         available_spots = parking_station.get_available_spots(VehicleType.BUS)
-        assert len(available_spots) == 2
+        assert len(available_spots) == 2  # One spot taken, 2 remaining
 
     def test_simultaneous_parking(self, parking_station, mini_vehicle, bus_vehicle):
         """Test parking Mini and Bus vehicles simultaneously"""
@@ -39,8 +34,8 @@ class TestParkingStation:
             
             assert spot_mini is not None
             assert spot_bus is not None
-            assert spot_mini.startswith("MINI_")
-            assert spot_bus.startswith("BUS_")
+            assert spot_mini.startswith("MINI_")  
+            assert spot_bus.startswith("BUS_")    
 
     @pytest.mark.parametrize("vehicle_type,expected_count", [
         (VehicleType.MINI, 5),
