@@ -27,3 +27,6 @@ Parking station defines the critical business logic.
 A parking station object has a list mini and bus spots.
 
 Function _park_vehicle_ attempts to park a particular vehicle of type of MINI or BUS in an appropriate spot if available. 
+
+### Workflows
+
