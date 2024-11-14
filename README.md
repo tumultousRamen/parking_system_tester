@@ -28,5 +28,13 @@ A parking station object has a list mini and bus spots.
 
 Function _park_vehicle_ attempts to park a particular vehicle of type of MINI or BUS in an appropriate spot if available. 
 
-### Workflows
+### GitHub Actions Workflow
+The test.yaml configuration runs tets for every push to the projects main branch, and runs on every pull request as well. The workflow ensures immediate feedback on code changes. It uses the ubtuntu-latest for consistent environment, and Python v3.9 for reproducability. It also configures automated dependency installation. 
 
+Additionally, the workflow uploads test results if test fails (if: always()) and preserves reports for debugging and analysis. It also maintains historical test data.
+
+### PyTest Configuration
+
+pytest.ini automatically discovers tests in the test directory, and automatically runs tests in parallel based on CPU cores which reduces test execution time signiicantly. It also helps catch race conditions in concurrent operations. 
+
+The reports generated contain detailed execution output (--verbose) and its generates machine-readable test results (--junit-xml) for CI systems. It also generates human-readable (--html) HTML test reports. It covers code coverage tracking (--cov) and generates HTML (--cov-report) coverage report.  
